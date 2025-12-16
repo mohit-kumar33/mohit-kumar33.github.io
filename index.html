@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer & Security Portfolio</title>
+    <style>
+        /* --- PSYCHOLOGICAL COLOR PALETTE & VARIABLES --- */
+        :root {
+            /* Background: Deep Navy Slate. Psychology: Trust, Intelligence, Stability. Easier on eyes than pure black. */
+            --bg-core: #0f172a;
+            /* Cards: Slightly lighter slate. Psychology: Creates depth, makes content "pop" forward. */
+            --bg-card: #1e293b;
+            /* Primary Text: Off-white. Psychology: Clean, readable contrast without harsh glare. */
+            --text-primary: #f1f5f9;
+            /* Secondary Text: Cool grey. Psychology: De-emphasizes secondary info so the main points stand out. */
+            --text-secondary: #94a3b8;
+            /* Accent: Electric Cyan. Psychology: Future-tech, energy, clarity. Draws the eye. */
+            --accent-tech: #38bdf8;
+            /* Highlight: Success Green. Psychology: Money, Growth, "Go", Positive Outcome. Used ONLY for wins. */
+            --highlight-success: #4ade80;
+            
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 900px;
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-core);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        /* --- TYPOGRAPHY EFFECTS --- */
+        h1, h2, h3 { line-height: 1.1; letter-spacing: -0.02em; }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        h3 { 
+            font-size: 1.2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* The "Gradient Name" Effect - Makes you look modern and dynamic */
+        .hero-name-gradient {
+            background: linear-gradient(to right, var(--accent-tech), #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Links */
+        a { color: var(--accent-tech); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { text-decoration: underline; opacity: 0.8; }
+
+        /* --- LAYOUT --- */
+        .container { max-width: var(--max-width); margin: 0 auto; }
+        section { margin-bottom: 5rem; }
+
+        /* --- THE HEADER (Contact Info) --- */
+        .contact-bar {
+            display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);
+        }
+        .contact-bar span { display: flex; align-items: center; gap: 0.5rem; }
+
+        /* --- PSYCHOLOGICAL HOOK (Summary) --- */
+        /* The green border visually signals "This is a valuable statement" */
+        .hook-summary {
+            font-size: 1.2rem;
+            border-left: 4px solid var(--highlight-success);
+            padding-left: 1.5rem;
+            background: linear-gradient(to right, var(--bg-card), transparent);
+            padding-top: 1rem; padding-bottom: 1rem; border-radius: 0 8px 8px 0;
+        }
+
+        /* --- THE HALO EFFECT (Signature Wins) --- */
+        /* Card layout makes achievements look like "trophies" */
+        .wins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .win-card {
+            background: var(--bg-card); padding: 2rem; border-radius: 12px;
+            border: 1px solid #334155; transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        /* Subtle hover effect for interactivity */
+        .win-card:hover { transform: translateY(-5px); border-color: var(--accent-tech); }
+        .win-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        .win-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-tech); }
+
+        /* --- SKILLS BADGES --- */
+        .skills-flex { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill-badge {
+            background: var(--bg-card); color: var(--text-primary);
+            padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
+            border: 1px solid #334155; transition: 0.3s;
+        }
+        .skill-badge:hover { border-color: var(--accent-tech); background: #334155; }
+        .skill-highlight { border-color: var(--accent-tech); color: var(--accent-tech); }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .timeline-item {
+            border-left: 2px solid #334155; padding-left: 2rem; position: relative; margin-bottom: 3rem;
+        }
+        /* The "dot" on the timeline */
+        .timeline-item::before {
+            content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px;
+            border-radius: 50%; background: var(--accent-tech);
+        }
+        .role-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .role-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
+        .role-org { color: var(--accent-tech); font-weight: 500; }
+        .role-date { font-family: monospace; color: var(--text-secondary); font-size: 0.9rem; }
+        .role-context { font-style: italic; color: var(--text-secondary); margin-bottom: 1rem; display: block; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;}
+
+        /* --- Wording Effect: Power Bullets --- */
+        .power-bullets { list-style: none; }
+        .power-bullets li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+        /* Use an arrow instead of a dot to imply forward motion */
+        .power-bullets li::before {
+            content: '→'; position: absolute; left: 0; color: var(--highlight-success); font-weight: bold;
+        }
+        /* Bold important keywords for scanners */
+        .impact-word { color: var(--highlight-success); font-weight: 700; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .role-header { flex-direction: column; gap: 0.5rem; }
+            body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header style="margin-bottom: 4rem;">
+        <h1 class="hero-name-gradient">MOHIT KUMAR</h1>
+        <h2>Full Stack Developer & Security-Engineer</h2>
+        
+        <div class="contact-bar">
+            <span style="display: flex; align-items: center; gap: 6px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Location" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">Rajasthan,India</span>
+
+            <span style="display: flex; align-items: center; gap: 6px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" alt="Email" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">mohitkumargadhwal@gmail.com</span>
+    
+            <a href="https://www.linkedin.com/in/mohit-kumar-11b6b837b/" target="_blank" style="display: flex; align-items: center; gap: 5px; color: var(--text-secondary); text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">LinkedIn</a>
+    
+            <a href="https://github.com/mohit-kumar33" target="_blank" style="display: flex; align-items: center; gap: 5px; color: var(--text-secondary); text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">GitHub</a>
+        </div>
+    </header>
+
+    <section>
+        <div class="hook-summary">
+            <p>
+                Outcome-focused Developer combining robust backend engineering (Python/Django) with a <strong>security-first mindset</strong>. Experience architecting solutions for national-level hackathons (SIH 2025) and configuring hardened Linux environments. Passionate about building scalable web applications that are secure by design.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Signature Career Wins</h3>
+        <div class="wins-grid">
+            <article class="win-card">
+                <span class="win-icon">🏆</span>
+                <div class="win-title">National Innovation (SIH 2025)</div>
+                <p>Architected a rapid-prototype solution for Smart India Hackathon Problem ID: <strong>25080</strong> under extreme time constraints.</p>
+            </article>
+            
+            <article class="win-card">
+                <span class="win-icon">🛡️</span>
+                <div class="win-title">Technical Resilience</div>
+                <p>Successfully deployed complex **Kali Linux** environments, resolving kernel/driver compatibility issues to establish a secure testing lab.</p>
+            </article>
+
+            <article class="win-card">
+                <span class="win-icon">⚡</span>
+                <div class="win-title">Backend Architecture</div>
+                <p>Developed scalable backend logic using **Python & Django**, ensuring high-performance data handling for secure web applications.</p>
+            </article>
+        </div>
+    </section>
+
+    <section>
+        <h3>Technical Arsenal</h3>
+        <div class="skills-flex">
+            <span class="skill-badge skill-highlight">Python</span>
+            <span class="skill-badge skill-highlight">Django</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">SQL</span>
+            <span class="skill-badge skill-highlight">Kali Linux</span>
+            <span class="skill-badge">Network Security</span>
+            <span class="skill-badge skill-highlight">Git/GitHub</span>
+            <span class="skill-badge skill-highlight">VS Code</span>
+            <span class="skill-badge">Linux Terminal (Bash)</span>
+        </div>
+    </section>
+
+    <section>
+        <h3>Project Experience</h3>
+
+        <div class="timeline-item">
+            <div class="role-header">
+                <div><span class="role-title">Lead Developer</span> <span class="role-org">@ Smart India Hackathon 2025</span></div>
+                <span class="role-date">2025</span>
+            </div>
+            <span class="role-context">Context: National-level challenge solving Problem Statement 25080.</span>
+            <ul class="power-bullets">
+                <li><strong>Architected</strong> the core application logic using Python/Django, translating complex requirements into deployable code.</li>
+                <li>Collaborated under extreme pressure to deliver a functional <span class="impact-word">MVP (Minimum Viable Product)</span> within the 36-hour competition timeframe.</li>
+                <li><span class="impact-word">Result:</span> Delivered a working prototype that met all core requirements.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="role-header">
+                <div><span class="role-title">Independent Security Researcher</span> <span class="role-org">@ Home Lab</span></div>
+                <span class="role-date">ongoing</span>
+            </div>
+            <span class="role-context">Context: Self-initiated project to master penetration testing protocols.</span>
+            <ul class="power-bullets">
+                <li>Configured a dedicated <strong>Kali Linux</strong> environment, troubleshooting complex driver dependencies to ensure system stability.</li>
+                <li>Conducted research on Tor Browser privacy protocols and onion routing to understand secure communication layers.</li>
+                <li><span class="impact-word">Result:</span> Established a functional lab for testing network vulnerabilities safely.</li>
+            </ul>
+        </div>
+       
+         <div class="timeline-item" style="border-left-color: transparent;"> <div class="role-header">
+                <div><span class="role-title">Student Researcher & Leader</span> <span class="role-org">@ University</span></div>
+            </div>
+            <ul class="power-bullets" style="margin-top: 1rem;">
+                <li>Led research on "Superconductivity and its Applications," synthesizing complex physics concepts into accessible technical documentation.</li>
+                <li>Completed "Leadership Fundamentals" coursework, developing frameworks for effective technical team management.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer style="text-align: center; color: var(--text-secondary); margin-top: 5rem; border-top: 1px solid #334155; padding-top: 2rem;">
+        <p>© 2025 Mohit Kumar</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
