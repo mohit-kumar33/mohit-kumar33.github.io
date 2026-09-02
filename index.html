@@ -1,260 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer & Security Portfolio</title>
-    <style>
-        /* --- PSYCHOLOGICAL COLOR PALETTE & VARIABLES --- */
-        :root {
-            /* Background: Deep Navy Slate. Psychology: Trust, Intelligence, Stability. Easier on eyes than pure black. */
-            --bg-core: #0f172a;
-            /* Cards: Slightly lighter slate. Psychology: Creates depth, makes content "pop" forward. */
-            --bg-card: #1e293b;
-            /* Primary Text: Off-white. Psychology: Clean, readable contrast without harsh glare. */
-            --text-primary: #f1f5f9;
-            /* Secondary Text: Cool grey. Psychology: De-emphasizes secondary info so the main points stand out. */
-            --text-secondary: #94a3b8;
-            /* Accent: Electric Cyan. Psychology: Future-tech, energy, clarity. Draws the eye. */
-            --accent-tech: #38bdf8;
-            /* Highlight: Success Green. Psychology: Money, Growth, "Go", Positive Outcome. Used ONLY for wins. */
-            --highlight-success: #4ade80;
-            
-            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --max-width: 900px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Kumar — AI/ML Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-        /* --- RESET & BASE STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--bg-core);
-            color: var(--text-primary);
-            font-family: var(--font-stack);
-            line-height: 1.6;
-            padding: 2rem 1rem;
-        }
+:root{
+  --bg:#FAF9F7;
+  --surface:#FFFFFF;
+  --surface-dark:#12151C;
+  --border:#E5E3DF;
+  --border-dark:#262B36;
+  --ink:#15171C;
+  --ink-soft:#5C6270;
+  --ink-inverse:#F4F5F7;
+  --accent:#1E3A8A;
+  --accent-light:#EEF2FF;
+  --accent-2:#F0B429;
+  --radius:14px;
+}
 
-        /* --- TYPOGRAPHY EFFECTS --- */
-        h1, h2, h3 { line-height: 1.1; letter-spacing: -0.02em; }
-        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
-        h2 { font-size: 1.5rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem; }
-        h3 { 
-            font-size: 1.2rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace;}
+.display{font-family:'Space Grotesk',sans-serif;}
 
-        /* The "Gradient Name" Effect - Makes you look modern and dynamic */
-        .hero-name-gradient {
-            background: linear-gradient(to right, var(--accent-tech), #818cf8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+section{padding:96px 0;}
+@media (max-width:640px){section{padding:64px 0;} .wrap{padding:0 20px;}}
 
-        /* Links */
-        a { color: var(--accent-tech); text-decoration: none; transition: all 0.3s ease; }
-        a:hover { text-decoration: underline; opacity: 0.8; }
+/* ---------- NAV ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,249,247,0.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:0 28px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:14px;color:var(--ink-soft);font-weight:500;transition:color .15s;}
+.nav-links a:hover{color:var(--ink);}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:999px;
+  font-size:14px;font-weight:600;
+  border:1px solid var(--ink);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn-primary{background:var(--ink);color:var(--ink-inverse);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(20,20,25,0.18);}
+.btn-ghost{border-color:var(--border);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--ink);}
+@media (max-width:720px){.nav-links a:not(.btn){display:none;}}
 
-        /* --- LAYOUT --- */
-        .container { max-width: var(--max-width); margin: 0 auto; }
-        section { margin-bottom: 5rem; }
+/* ---------- HERO ---------- */
+.hero{padding:88px 0 64px;position:relative;}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;
+  color:var(--accent);letter-spacing:.02em;margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-2);display:inline-block;}
+.hero h1{
+  font-size:clamp(38px,6vw,62px);
+  font-weight:700;letter-spacing:-0.03em;line-height:1.04;
+  min-height:1.1em;
+}
+.cursor{display:inline-block;width:3px;height:0.85em;background:var(--accent);margin-left:2px;
+  animation:blink 1s step-start infinite;vertical-align:-0.1em;}
+@keyframes blink{50%{opacity:0;}}
+.hero .role{
+  font-size:clamp(18px,2.4vw,24px);color:var(--ink-soft);font-weight:500;margin-top:14px;
+}
+.hero .pitch{
+  margin-top:22px;max-width:560px;color:var(--ink-soft);font-size:16.5px;
+  border-left:2px dashed var(--border);padding-left:16px;
+}
+.hero .pitch em{font-style:normal;color:#A8ABB4;}
+.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+.stat-row{display:flex;gap:14px;margin-top:56px;flex-wrap:wrap;}
+.stat-chip{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;
+  background:var(--accent-light);color:var(--accent);
+  padding:8px 13px;border-radius:8px;display:flex;align-items:center;gap:8px;
+}
+.stat-chip .prob{color:var(--accent-2);font-weight:600;}
 
-        /* --- THE HEADER (Contact Info) --- */
-        .contact-bar {
-            display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);
-        }
-        .contact-bar span { display: flex; align-items: center; gap: 0.5rem; }
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
 
-        /* --- PSYCHOLOGICAL HOOK (Summary) --- */
-        /* The green border visually signals "This is a valuable statement" */
-        .hook-summary {
-            font-size: 1.2rem;
-            border-left: 4px solid var(--highlight-success);
-            padding-left: 1.5rem;
-            background: linear-gradient(to right, var(--bg-card), transparent);
-            padding-top: 1rem; padding-bottom: 1rem; border-radius: 0 8px 8px 0;
-        }
+/* ---------- SECTION HEAD ---------- */
+.sec-head{margin-bottom:40px;}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:8px;}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.2vw,32px);font-weight:600;letter-spacing:-0.02em;}
 
-        /* --- THE HALO EFFECT (Signature Wins) --- */
-        /* Card layout makes achievements look like "trophies" */
-        .wins-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .win-card {
-            background: var(--bg-card); padding: 2rem; border-radius: 12px;
-            border: 1px solid #334155; transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        /* Subtle hover effect for interactivity */
-        .win-card:hover { transform: translateY(-5px); border-color: var(--accent-tech); }
-        .win-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-        .win-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-tech); }
+/* ---------- FEATURED PROJECT (hero of content) ---------- */
+.featured{
+  background:var(--surface-dark);color:var(--ink-inverse);
+  border-radius:20px;padding:48px;position:relative;overflow:hidden;
+}
+.featured::before{
+  content:"";position:absolute;top:-40%;right:-15%;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(30,58,138,0.55),transparent 70%);
+  pointer-events:none;
+}
+.featured-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;position:relative;}
+.featured-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-2);letter-spacing:.03em;}
+.featured h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,30px);margin-top:10px;font-weight:600;}
+.featured p.desc{color:#B7BCC8;margin-top:14px;max-width:600px;font-size:15.5px;}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;position:relative;}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  border:1px solid var(--border-dark);color:#C9CDD6;
+  padding:6px 11px;border-radius:7px;
+}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;margin-top:32px;position:relative;}
+.metric{border-top:1px solid var(--border-dark);padding-top:12px;}
+.metric .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:var(--ink-inverse);}
+.metric .num.placeholder{color:#565C6B;}
+.metric .lbl{font-size:12.5px;color:#8B909C;margin-top:4px;}
+.featured-links{display:flex;gap:14px;margin-top:32px;position:relative;flex-wrap:wrap;}
+.link-pill{
+  font-size:13.5px;font-weight:500;padding:9px 16px;border-radius:999px;
+  border:1px solid var(--border-dark);color:var(--ink-inverse);
+  transition:border-color .15s;
+}
+.link-pill:hover{border-color:var(--accent-2);}
 
-        /* --- SKILLS BADGES --- */
-        .skills-flex { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-        .skill-badge {
-            background: var(--bg-card); color: var(--text-primary);
-            padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
-            border: 1px solid #334155; transition: 0.3s;
-        }
-        .skill-badge:hover { border-color: var(--accent-tech); background: #334155; }
-        .skill-highlight { border-color: var(--accent-tech); color: var(--accent-tech); }
+/* ---------- placeholder card ---------- */
+.ph{
+  border:1.5px dashed var(--border);border-radius:10px;
+  padding:14px 16px;color:#A8ABB4;font-size:13.5px;
+  background:rgba(255,255,255,0.4);
+}
+.featured .ph{border-color:var(--border-dark);color:#6B7180;background:rgba(255,255,255,0.02);}
 
-        /* --- EXPERIENCE TIMELINE --- */
-        .timeline-item {
-            border-left: 2px solid #334155; padding-left: 2rem; position: relative; margin-bottom: 3rem;
-        }
-        /* The "dot" on the timeline */
-        .timeline-item::before {
-            content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px;
-            border-radius: 50%; background: var(--accent-tech);
-        }
-        .role-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.5rem; }
-        .role-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
-        .role-org { color: var(--accent-tech); font-weight: 500; }
-        .role-date { font-family: monospace; color: var(--text-secondary); font-size: 0.9rem; }
-        .role-context { font-style: italic; color: var(--text-secondary); margin-bottom: 1rem; display: block; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;}
+/* ---------- PROJECTS GRID ---------- */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:0;}
+@media (max-width:720px){.grid-2{grid-template-columns:1fr;}}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px;transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(20,20,25,0.06);}
+.card h4{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:8px;}
+.card .chip-row{margin-top:16px;}
+.card .chip{border-color:var(--border);color:var(--ink-soft);}
 
-        /* --- Wording Effect: Power Bullets --- */
-        .power-bullets { list-style: none; }
-        .power-bullets li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
-        /* Use an arrow instead of a dot to imply forward motion */
-        .power-bullets li::before {
-            content: '→'; position: absolute; left: 0; color: var(--highlight-success); font-weight: bold;
-        }
-        /* Bold important keywords for scanners */
-        .impact-word { color: var(--highlight-success); font-weight: 700; }
+/* ---------- EXPERIENCE TIMELINE ---------- */
+.timeline{border-left:2px solid var(--border);margin-left:6px;padding-left:30px;display:flex;flex-direction:column;gap:36px;}
+.tl-item{position:relative;}
+.tl-item::before{
+  content:attr(data-n);
+  position:absolute;left:-42px;top:2px;width:24px;height:24px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--accent);color:var(--accent);
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.tl-item h4{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;}
+.tl-item .meta{font-size:13px;color:var(--ink-soft);margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.tl-item ul{margin-top:12px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;}
+.tl-item li{font-size:14px;color:var(--ink-soft);}
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .role-header { flex-direction: column; gap: 0.5rem; }
-            body { padding: 1rem; }
-        }
-    </style>
+/* ---------- SKILLS ---------- */
+.skill-group{margin-bottom:26px;}
+.skill-group .g-title{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-soft);margin-bottom:12px;}
+.skill-chips{display:flex;flex-wrap:wrap;gap:9px;}
+.skill-chip{
+  padding:8px 14px;border-radius:8px;font-size:13.5px;font-weight:500;
+  background:var(--accent-light);color:var(--accent);
+}
+
+/* ---------- EDUCATION / CONTACT ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media (max-width:720px){.split{grid-template-columns:1fr;}}
+
+/* ---------- ICONS ---------- */
+.icon{width:18px;height:18px;flex-shrink:0;}
+.link-pill.iconed, .contact-item{display:inline-flex;align-items:center;gap:9px;}
+
+/* ---------- LEETCODE ---------- */
+.lc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;}
+@media (max-width:720px){.lc-grid{grid-template-columns:1fr;}}
+.lc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+.lc-stat{border-top:1px solid var(--border);padding-top:10px;}
+.lc-stat .num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;}
+.lc-stat .lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+.lang-bar-row{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.lang-bar-label{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-bottom:4px;}
+.lang-bar-track{height:7px;border-radius:4px;background:var(--border);overflow:hidden;}
+.lang-bar-fill{height:100%;background:var(--accent);border-radius:4px;}
+.badge-row{display:flex;align-items:center;gap:12px;margin-top:22px;}
+.badge-icon{
+  width:40px;height:40px;border-radius:10px;background:var(--accent-2);
+  display:flex;align-items:center;justify-content:center;color:#12151C;font-size:16px;
+}
+
+footer{border-top:1px solid var(--border);padding:56px 0 40px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+.footer-links a{font-size:14px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:8px;}
+.footer-links a:hover{color:var(--ink);}
+.footer-links .icon{width:16px;height:16px;}
+.foot-note{font-size:12.5px;color:#A8ABB4;font-family:'JetBrains Mono',monospace;margin-top:20px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-    <header style="margin-bottom: 4rem;">
-        <h1 class="hero-name-gradient">MOHIT KUMAR</h1>
-        <h2>Full Stack Developer & Security-Engineer</h2>
-        
-        <div class="contact-bar">
-            <span style="display: flex; align-items: center; gap: 6px;">
-            <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Location" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">Rajasthan,India</span>
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-links" style="margin-left:auto;">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#leetcode">LeetCode</a>
+      <a href="#contact">Contact</a>
+      <a href="https://drive.google.com/file/d/1s3-qCcl_HDcvS_rk8tY2JxSeZYKMLwGT/view?usp=sharing" download class="btn btn-primary">Resume</a>
+    </nav>
+  </div>
+</header>
 
-            <span style="display: flex; align-items: center; gap: 6px;">
-            <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" alt="Email" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">mohitkumargadhwal@gmail.com</span>
-    
-            <a href="https://www.linkedin.com/in/mohit-kumar-11b6b837b/" target="_blank" style="display: flex; align-items: center; gap: 5px; color: var(--text-secondary); text-decoration: none;">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">LinkedIn</a>
-    
-            <a href="https://github.com/mohit-kumar33" target="_blank" style="display: flex; align-items: center; gap: 5px; color: var(--text-secondary); text-decoration: none;">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">GitHub</a>
+<section class="hero wrap">
+  <h1 class="display" id="typedName"></h1>
+  <div class="role">AI / ML Engineer <span class="mono" style="color:#A8ABB4;font-size:15px;">— building language models from scratch</span></div>
+  <p class="pitch">I'm a B.Tech Computer Science student building deep learning systems from first principles — including a neural network framework with a hand-written autograd engine that trains real models like MNIST to 97.63% accuracy. I care about understanding every layer of the stack, not just calling an API.</p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-primary">View Featured Work</a>
+    <a href="https://github.com/mohit-kumar33" target="_blank" class="btn btn-ghost">
+      <svg class="icon" style="width:15px;height:15px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+      GitHub — one click
+    </a>
+    <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+  </div>
+  <div class="stat-row">
+    <div class="stat-chip">focus <span class="prob">LLM / NLP</span></div>
+    <div class="stat-chip">status <span class="prob">open to opportunities</span></div>
+    <div class="stat-chip">based in <span class="prob">Rajasthan, India</span></div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-tag">01 — Featured</div>
+    <h2 class="sec-title">The flagship project</h2>
+  </div>
+
+  <div class="featured reveal">
+    <div class="featured-top">
+      <div>
+        <div class="featured-label">JUN 2026 – AUG 2026 · OPEN SOURCE · MIT LICENSE</div>
+        <h3>neural_network_framework — a deep learning framework built from scratch</h3>
+      </div>
+    </div>
+    <p class="desc">A complete deep learning framework written in pure Python + NumPy, with every gradient computed explicitly — no autodiff library, no black boxes. Implements a real reverse-mode automatic differentiation engine (topological sort + gradient closures), a PyTorch-mirrored API, and every layer needed to train an actual network end to end.</p>
+    <div class="chip-row">
+      <span class="chip">Python</span>
+      <span class="chip">NumPy</span>
+      <span class="chip">Pytest</span>
+      <span class="chip">Reverse-mode Autograd</span>
+      <span class="chip">Optimizers (SGD / Adam / AdamW)</span>
+    </div>
+    <div class="metric-grid">
+      <div class="metric"><div class="num">97.63%</div><div class="lbl">MNIST test accuracy</div></div>
+      <div class="metric"><div class="num">57 / 57</div><div class="lbl">tests passing</div></div>
+      <div class="metric"><div class="num">~1,200</div><div class="lbl">lines of code</div></div>
+      <div class="metric"><div class="num">0</div><div class="lbl">autodiff libraries used</div></div>
+    </div>
+    <p class="desc" style="margin-top:22px;font-size:14px;">Built from first principles: <strong style="color:#D8DAE0;">Tensor</strong> autograd engine · <strong style="color:#D8DAE0;">Linear / BatchNorm1d / Dropout / Embedding</strong> layers · 6 activation functions (ReLU, GELU, Softmax, etc.) · 4 loss functions (MSE, BCE, CrossEntropy, NLL) · SGD with momentum/Nesterov, Adam, AdamW · Xavier/He initializers · a computation-graph visualizer. Verified correct with 57 gradient-check tests using finite differences — trains XOR to 100% accuracy in ~200 steps and MNIST to 97.63% test accuracy in 10 epochs.</p>
+    <div class="featured-links">
+      <a href="https://github.com/mohit-kumar33/neural_network_framework" target="_blank" class="link-pill">→ GitHub repo</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-tag">02 — Toolkit</div>
+    <h2 class="sec-title">Skills</h2>
+  </div>
+  <div class="reveal">
+    <div class="skill-group">
+      <div class="g-title">languages</div>
+      <div class="skill-chips"><span class="skill-chip">Python</span><span class="skill-chip">C</span><span class="skill-chip">C++</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="g-title">machine learning</div>
+      <div class="skill-chips"><span class="skill-chip">Neural Networks</span><span class="skill-chip">Backpropagation</span><span class="skill-chip">Automatic Differentiation</span><span class="skill-chip">Optimization</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="g-title">libraries & tools</div>
+      <div class="skill-chips"><span class="skill-chip">NumPy</span><span class="skill-chip">Pytest</span><span class="skill-chip">Git</span><span class="skill-chip">GitHub</span><span class="skill-chip">Linux</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="g-title">web & backend</div>
+      <div class="skill-chips"><span class="skill-chip">Django</span><span class="skill-chip">HTML</span><span class="skill-chip">CSS</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="g-title">databases</div>
+      <div class="skill-chips"><span class="skill-chip">MySQL</span><span class="skill-chip">MongoDB</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-tag">03 — Proof of Work</div>
+    <h2 class="sec-title">Achievements & Certifications</h2>
+  </div>
+  <div class="grid-2 reveal">
+    <div class="card">
+      <h4>Achievements</h4>
+      <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="font-size:14px;color:var(--ink-soft);">Solved 100+ programming problems across online coding platforms through regular algorithmic practice.</li>
+        <li style="font-size:14px;color:var(--ink-soft);">Earned the LeetCode 50+ Days Badge for consistent daily problem-solving.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Certifications</h4>
+      <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="font-size:14px;color:var(--ink-soft);"><strong style="color:var(--ink);">Master Ethical Hacking with AI</strong> — Internshala, Feb 2026</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="leetcode" class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-tag">04 — Problem Solving</div>
+    <h2 class="sec-title">LeetCode</h2>
+  </div>
+  <div class="card reveal" style="padding:34px;">
+    <div class="lc-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 4L7 12l6 8M17 4l-6 8 6 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="mono" style="font-size:13px;color:var(--ink-soft);">@MOHIT_KUMAR_999</span>
         </div>
-    </header>
-
-    <section>
-        <div class="hook-summary">
-            <p>
-                Outcome-focused Developer combining robust backend engineering (Python/Django) with a <strong>security-first mindset</strong>. Experience architecting solutions for national-level hackathons (SIH 2025) and configuring hardened Linux environments. Passionate about building scalable web applications that are secure by design.
-            </p>
+        <div class="lc-stats">
+          <div class="lc-stat"><div class="num">80+</div><div class="lbl">problems solved</div></div>
+          <div class="lc-stat"><div class="num">6×</div><div class="lbl">dynamic programming</div></div>
+          <div class="lc-stat"><div class="num">15×</div><div class="lbl">binary search</div></div>
         </div>
-    </section>
-
-    <section>
-        <h3>Signature Career Wins</h3>
-        <div class="wins-grid">
-            <article class="win-card">
-                <span class="win-icon">🏆</span>
-                <div class="win-title">National Innovation (SIH 2025)</div>
-                <p>Architected a rapid-prototype solution for Smart India Hackathon Problem ID: <strong>25080</strong> under extreme time constraints.</p>
-            </article>
-            
-            <article class="win-card">
-                <span class="win-icon">🛡️</span>
-                <div class="win-title">Technical Resilience</div>
-                <p>Successfully deployed complex **Kali Linux** environments, resolving kernel/driver compatibility issues to establish a secure testing lab.</p>
-            </article>
-
-            <article class="win-card">
-                <span class="win-icon">⚡</span>
-                <div class="win-title">Backend Architecture</div>
-                <p>Developed scalable backend logic using **Python & Django**, ensuring high-performance data handling for secure web applications.</p>
-            </article>
+        <div class="badge-row">
+          <div class="badge-icon">★</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;">50 Days Badge 2026</div>
+            <div style="font-size:12px;color:var(--ink-soft);">Most recent achievement</div>
+          </div>
         </div>
-    </section>
-
-    <section>
-        <h3>Technical Arsenal</h3>
-        <div class="skills-flex">
-            <span class="skill-badge skill-highlight">Python</span>
-            <span class="skill-badge skill-highlight">Django</span>
-            <span class="skill-badge">Node.js</span>
-            <span class="skill-badge">JavaScript</span>
-            <span class="skill-badge">SQL</span>
-            <span class="skill-badge skill-highlight">Kali Linux</span>
-            <span class="skill-badge">Network Security</span>
-            <span class="skill-badge skill-highlight">Git/GitHub</span>
-            <span class="skill-badge skill-highlight">VS Code</span>
-            <span class="skill-badge">Linux Terminal (Bash)</span>
+        <div style="margin-top:22px;">
+          <a href="https://leetcode.com/u/MOHIT_KUMAR_999/" target="_blank" class="link-pill iconed" style="border-color:var(--border);color:var(--ink);">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4L7 12l6 8M17 4l-6 8 6 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View full profile
+          </a>
         </div>
-    </section>
-
-    <section>
-        <h3>Project Experience</h3>
-
-        <div class="timeline-item">
-            <div class="role-header">
-                <div><span class="role-title">Lead Developer</span> <span class="role-org">@ Smart India Hackathon 2025</span></div>
-                <span class="role-date">2025</span>
-            </div>
-            <span class="role-context">Context: National-level challenge solving Problem Statement 25080.</span>
-            <ul class="power-bullets">
-                <li><strong>Architected</strong> the core application logic using Python/Django, translating complex requirements into deployable code.</li>
-                <li>Collaborated under extreme pressure to deliver a functional <span class="impact-word">MVP (Minimum Viable Product)</span> within the 36-hour competition timeframe.</li>
-                <li><span class="impact-word">Result:</span> Delivered a working prototype that met all core requirements.</li>
-            </ul>
+      </div>
+      <div>
+        <div class="g-title mono" style="font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;">solved by language</div>
+        <div class="lang-bar-row">
+          <div>
+            <div class="lang-bar-label"><span>C++</span><span>71</span></div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:90%;"></div></div>
+          </div>
+          <div>
+            <div class="lang-bar-label"><span>Python3</span><span>7</span></div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:10%;background:var(--accent-2);"></div></div>
+          </div>
+          <div>
+            <div class="lang-bar-label"><span>Bash</span><span>2</span></div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" style="width:4%;background:#A8ABB4;"></div></div>
+          </div>
         </div>
-
-        <div class="timeline-item">
-            <div class="role-header">
-                <div><span class="role-title">Independent Security Researcher</span> <span class="role-org">@ Home Lab</span></div>
-                <span class="role-date">ongoing</span>
-            </div>
-            <span class="role-context">Context: Self-initiated project to master penetration testing protocols.</span>
-            <ul class="power-bullets">
-                <li>Configured a dedicated <strong>Kali Linux</strong> environment, troubleshooting complex driver dependencies to ensure system stability.</li>
-                <li>Conducted research on Tor Browser privacy protocols and onion routing to understand secure communication layers.</li>
-                <li><span class="impact-word">Result:</span> Established a functional lab for testing network vulnerabilities safely.</li>
-            </ul>
+        <div class="g-title mono" style="font-size:12.5px;color:var(--ink-soft);margin:22px 0 10px;">core skill tags</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Array ×40</span>
+          <span class="skill-chip">String ×23</span>
+          <span class="skill-chip">Math ×20</span>
+          <span class="skill-chip">Hash Table ×12</span>
+          <span class="skill-chip">Two Pointers ×12</span>
+          <span class="skill-chip">Dynamic Programming ×6</span>
         </div>
-       
-         <div class="timeline-item" style="border-left-color: transparent;"> <div class="role-header">
-                <div><span class="role-title">Student Researcher & Leader</span> <span class="role-org">@ University</span></div>
-            </div>
-            <ul class="power-bullets" style="margin-top: 1rem;">
-                <li>Led research on "Superconductivity and its Applications," synthesizing complex physics concepts into accessible technical documentation.</li>
-                <li>Completed "Leadership Fundamentals" coursework, developing frameworks for effective technical team management.</li>
-            </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="split reveal">
+    <div>
+      <div class="sec-tag">05 — Education</div>
+      <div class="card" style="margin-top:14px;display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <h4>B.Tech, Computer Science & Engineering</h4>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Lovely Professional University, Phagwara, Punjab · Aug 2025 – Present</div>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:2px;">CGPA: 8.02</div>
         </div>
+        <div style="border-top:1px solid var(--border);padding-top:14px;">
+          <h4 style="font-size:15px;">Higher Secondary Education</h4>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Gudha Public School, Jhunjhunu, Rajasthan · Mar 2024</div>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:2px;">93%</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:14px;">
+          <h4 style="font-size:15px;">Secondary Education</h4>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px;">Gudha Public School, Jhunjhunu, Rajasthan · Mar 2022</div>
+          <div style="font-size:13px;color:var(--ink-soft);margin-top:2px;">76%</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">06 — About</div>
+      <div class="card" style="margin-top:14px;display:flex;flex-direction:column;gap:14px;">
+        <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.65;">I'm a B.Tech Computer Science student with a strong interest in Artificial Intelligence, Machine Learning, and the fundamentals behind intelligent systems. My journey began with programming and problem-solving, gradually leading me to explore how modern AI systems learn, reason, and operate beneath the surface.</p>
+        <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.65;">I enjoy building and understanding technology from first principles rather than treating it as a black box. This mindset led me to develop a deep learning framework from scratch using Python and NumPy, implementing reverse-mode automatic differentiation, neural network layers, loss functions, optimizers, and backpropagation.</p>
+        <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.65;">Currently, I am focused on deep learning, NLP, and language models while continuing to strengthen my foundations in algorithms, mathematics, and software development. My goal is to grow as an AI/ML engineer and contribute to building intelligent systems that are both technically meaningful and impactful.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </section>
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-tag">Get in touch</div>
+    <h2 class="sec-title" style="margin-top:8px;">Let's build something.</h2>
+    <div class="footer-inner" style="margin-top:32px;">
+      <div class="footer-links">
+        <a href="mailto:mohitkumargadhwal5@gmail.com" class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          mohitkumargadhwal5@gmail.com
+        </a>
+        <a href="https://github.com/mohit-kumar33" target="_blank" class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          mohit-kumar33
+        </a>
+        <a href="https://linkedin.com/in/mohit-kumar-11b6b837b" target="_blank" class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.4 8.75h3.12V21H3.4V8.75zm6.6 0h2.99v1.68h.04c.42-.79 1.44-1.62 2.96-1.62 3.17 0 3.75 2.08 3.75 4.79V21h-3.12v-5.72c0-1.36-.02-3.11-1.89-3.11-1.9 0-2.19 1.48-2.19 3.01V21H10V8.75z"/></svg>
+          mohit-kumar
+        </a>
+        <a href="https://leetcode.com/u/MOHIT_KUMAR_999/" target="_blank" class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4L7 12l6 8M17 4l-6 8 6 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          LeetCode
+        </a>
+        <a href="tel:+919256124351" class="contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +91-9256124351
+        </a>
+      </div>
+      <a href="https://drive.google.com/uc?export=download&id=1s3-qCcl_HDcvS_rk8tY2JxSeZYKMLwGT" download class="btn btn-primary">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download Resume
+      </a>
+    </div>
+    <div class="foot-note">© 2026 Mohit Kumar — built from scratch, like the models.</div>
+  </div>
+</footer>
 
-    <footer style="text-align: center; color: var(--text-secondary); margin-top: 5rem; border-top: 1px solid #334155; padding-top: 2rem;">
-        <p>© 2025 Mohit Kumar</p>
-    </footer>
+<script>
+// Hero token-stream typing effect
+const text = "Mohit Kumar";
+const el = document.getElementById('typedName');
+let i = 0;
+function type(){
+  if(i <= text.length){
+    el.innerHTML = text.slice(0,i) + '<span class="cursor"></span>';
+    i++;
+    setTimeout(type, 85);
+  } else {
+    el.innerHTML = text + '<span class="cursor"></span>';
+  }
+}
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  el.textContent = text;
+} else {
+  type();
+}
 
-</div>
-
+// Scroll reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
